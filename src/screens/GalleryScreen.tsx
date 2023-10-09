@@ -1,20 +1,13 @@
-import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import React from 'react';
+import PictureGallery from '../components/PictureGallery';
 
 const GalleryScreen = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View style={styles.container}>
-        <Text>GalleryScreen</Text>
-      </View>
+      <PictureGallery />
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default GalleryScreen;
