@@ -5,13 +5,13 @@ import AppNavigation from './src/navigation/AppNavigation';
 
 const App = () => {
   return (
-    <PaperProvider>
-      <SafeAreaProvider>
+    <SafeAreaProvider>
+      <PaperProvider>
         <NavigationContainer>
           <AppNavigation />
         </NavigationContainer>
-      </SafeAreaProvider>
-    </PaperProvider>
+      </PaperProvider>
+    </SafeAreaProvider>
   );
 };
 
