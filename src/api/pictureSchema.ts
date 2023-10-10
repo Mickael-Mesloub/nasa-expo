@@ -1,11 +1,13 @@
 import { z } from 'zod';
 
 export const pictureSchema = z.object({
+  title: z.string(),
   copyright: z.string(),
   date: z.string(),
   explanation: z.string(),
   hdurl: z.string(),
   url: z.string(),
+  thumbs: z.string().optional(),
 });
 
 export const picturesSchema = z.array(pictureSchema);
