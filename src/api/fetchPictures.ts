@@ -1,5 +1,5 @@
-import { api_key, axios } from './axios';
-import { PictureDto, picturesSchema } from './pictureSchema';
+import { axios } from './axios';
+import { picturesSchema } from './pictureSchema';
 
 export const fetchPictures = async (params: QueryParams) => {
   const response = await axios.get('', { params });

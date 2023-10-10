@@ -29,40 +29,43 @@ const DailyPicture = () => {
   }, [data]);
 
   return (
-    <View style={styles.picOfTheDayCard}>
-      <View style={styles.picOfTheDayTextsWrapper}>
-        <Text style={styles.mainTitle}>Picture Of the Day</Text>
+    <View style={styles.container}>
+      <View style={styles.picOfTheDayCard}>
+        <View style={styles.picOfTheDayTextsWrapper}>
+          <Text style={styles.mainTitle}>Picture Of the Day</Text>
 
-        <Text style={styles.picOfTheDayDate}>{data?.date}</Text>
-        <View style={styles.iconWrapper}>
-          <IconButton
-            iconOptions={{
-              name: 'share-social',
-              size: SIZES.large,
-              color: COLORS.tertiary,
-            }}
-            onPress={() => sharePicture(data)}
-          />
+          <Text style={styles.picOfTheDayDate}>{data?.date}</Text>
+          <View style={styles.iconWrapper}>
+            <IconButton
+              iconOptions={{
+                name: 'share-social',
+                size: SIZES.large,
+                color: COLORS.tertiary,
+              }}
+              onPress={() => sharePicture(data)}
+            />
+          </View>
         </View>
-      </View>
-      {data.url ? (
-        <>
-          <Image
-            source={{ uri: data?.url }}
-            resizeMode="cover"
-            style={styles.picOfTheDayImage}
-          />
-        </>
-      ) : (
-        <ActivityIndicator size={'large'} color={COLORS.secondary} />
-      )}
-      <View style={{ paddingTop: SIZES.small }}>
-        <Text style={styles.picOfTheDayTitle}>{data?.title}</Text>
-        {data.copyright && (
-          <Text style={styles.picOfTheDayCopyright}>
-            Copyright: {data?.copyright}
-          </Text>
+
+        {data.url ? (
+          <>
+            <Image
+              source={{ uri: data?.url }}
+              resizeMode="cover"
+              style={styles.picOfTheDayImage}
+            />
+          </>
+        ) : (
+          <ActivityIndicator size={'large'} color={COLORS.secondary} />
         )}
+        <View style={{ paddingTop: SIZES.small }}>
+          <Text style={styles.picOfTheDayTitle}>{data?.title}</Text>
+          {data.copyright && (
+            <Text style={styles.picOfTheDayCopyright}>
+              Copyright: {data?.copyright}
+            </Text>
+          )}
+        </View>
       </View>
     </View>
   );
@@ -71,10 +74,8 @@ const DailyPicture = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
   },
-
   picOfTheDayCard: {
     padding: SIZES.medium,
     marginVertical: SIZES.medium,
