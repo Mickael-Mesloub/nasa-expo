@@ -6,6 +6,7 @@ import GalleryStack from './GalleryStack';
 import { GalleryStackParamsList } from './GalleryStackParamsList';
 import { SearchStackParamsList } from './SearchStackParamsList';
 import SearchStack from './SearchStack';
+import { SIZES } from '../themes/theme';
 
 type TabNavigatorParamsList = {
   HomeStack: HomeStackParamsList;
@@ -24,7 +25,11 @@ const TabNavigation = () => {
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="home" color={color} size={26} />
+            <MaterialCommunityIcons
+              name="home"
+              color={color}
+              size={SIZES.xLarge}
+            />
           ),
         }}
       />
@@ -37,7 +42,7 @@ const TabNavigation = () => {
             <MaterialCommunityIcons
               name="folder-image"
               color={color}
-              size={26}
+              size={SIZES.xLarge}
             />
           ),
         }}
@@ -46,10 +51,10 @@ const TabNavigation = () => {
         name="SearchStack"
         component={SearchStack}
         options={{
-          tabBarLabel: 'Gallery',
+          tabBarLabel: 'Search',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
-              name="folder-image"
+              name="card-search"
               color={color}
               size={26}
             />

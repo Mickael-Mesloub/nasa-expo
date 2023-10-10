@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
 export const pictureSchema = z.object({
-  title: z.string(),
-  copyright: z.string(),
+  title: z.string().optional(),
+  copyright: z.string().optional(),
   date: z.string(),
   explanation: z.string(),
   hdurl: z.string(),
