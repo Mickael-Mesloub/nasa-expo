@@ -1,11 +1,5 @@
 import { axios } from './axios';
-import { picturesSchema } from './pictureSchema';
-
-export const fetchPictures = async (params: QueryParams) => {
-  const response = await axios.get('', { params });
-
-  return picturesSchema.parse(response.data);
-};
+import { picturesSchema } from '../models/picture.dto';
 
 type QueryParams = {
   date?: string;
@@ -14,4 +8,10 @@ type QueryParams = {
   count?: number;
   thumbs?: boolean;
   api_key?: string;
+};
+
+export const fetchPictures = async (params: QueryParams) => {
+  const response = await axios.get('', { params });
+
+  return picturesSchema.parse(response.data);
 };

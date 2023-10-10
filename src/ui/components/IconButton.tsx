@@ -1,8 +1,14 @@
-import {Pressable} from 'react-native';
+import { Pressable } from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { IconOptionsType } from '../../types/IconOptionsType';
 
-const IconButton = ({iconOptions, onPress}) => {
+interface Props {
+  iconOptions: IconOptionsType;
+  onPress: () => void;
+}
+
+const IconButton = ({ iconOptions, onPress }: Props) => {
   return (
     <Pressable hitSlop={10} onPress={onPress}>
       <Icon

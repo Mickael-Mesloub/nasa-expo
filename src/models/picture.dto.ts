@@ -13,3 +13,4 @@ export const pictureSchema = z.object({
 export const picturesSchema = z.array(pictureSchema);
 export type PictureDto = z.infer<typeof pictureSchema>;
 export type PicturesDto = z.infer<typeof picturesSchema>;
+export type Optional<T> = T | null | undefined;

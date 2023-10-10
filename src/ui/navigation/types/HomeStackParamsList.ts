@@ -1,4 +1,6 @@
 export type HomeStackParamsList = {
   HomeScreen: undefined;
-  DetailsScreen: undefined;
+  DetailsScreen: {
+    date: string;
+  };
 };

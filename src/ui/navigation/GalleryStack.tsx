@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import GalleryScreen from '../screens/GalleryScreen';
-import { GalleryStackParamsList } from './GalleryStackParamsList';
+import { GalleryStackParamsList } from './types/GalleryStackParamsList';
 
 const Stack = createNativeStackNavigator<GalleryStackParamsList>();
 
