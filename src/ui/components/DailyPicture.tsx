@@ -16,6 +16,10 @@ const DailyPicture = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<HomeStackParamsList>>();
 
+  /**
+   * !IMPORTANT : Move the fetch function to api > hooks
+   */
+
   useEffect(() => {
     fetchDailyPicture()
       .then((data) => setData(data))

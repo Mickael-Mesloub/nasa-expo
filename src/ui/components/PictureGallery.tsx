@@ -7,6 +7,10 @@ import { PicturesDto } from '../../models/picture.dto';
 const PictureGallery = () => {
   const [data, setData] = useState<PicturesDto>([]);
 
+  /**
+   * !IMPORTANT : Move the fetch function to api > hooks
+   */
+
   useEffect(() => {
     fetchPictures({
       api_key: api_key,
