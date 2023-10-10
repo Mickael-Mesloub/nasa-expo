@@ -6,7 +6,7 @@ import GalleryStack from './GalleryStack';
 import { GalleryStackParamsList } from './GalleryStackParamsList';
 import { SearchStackParamsList } from './SearchStackParamsList';
 import SearchStack from './SearchStack';
-import { SIZES } from '../themes/theme';
+import { COLORS, SIZES } from '../themes/theme';
 
 type TabNavigatorParamsList = {
   HomeStack: HomeStackParamsList;
@@ -18,16 +18,16 @@ const Tab = createMaterialBottomTabNavigator<TabNavigatorParamsList>();
 
 const TabNavigation = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator activeColor={COLORS.primary}>
       <Tab.Screen
         name="HomeStack"
         component={HomeStack}
         options={{
           tabBarLabel: 'Home',
-          tabBarIcon: ({ color }) => (
+          tabBarIcon: ({ focused, color }) => (
             <MaterialCommunityIcons
               name="home"
-              color={color}
+              color={focused ? COLORS.primary : color}
               size={SIZES.xLarge}
             />
           ),
@@ -38,10 +38,10 @@ const TabNavigation = () => {
         component={GalleryStack}
         options={{
           tabBarLabel: 'Gallery',
-          tabBarIcon: ({ color }) => (
+          tabBarIcon: ({ focused, color }) => (
             <MaterialCommunityIcons
               name="folder-image"
-              color={color}
+              color={focused ? COLORS.primary : color}
               size={SIZES.xLarge}
             />
           ),
@@ -52,10 +52,10 @@ const TabNavigation = () => {
         component={SearchStack}
         options={{
           tabBarLabel: 'Search',
-          tabBarIcon: ({ color }) => (
+          tabBarIcon: ({ focused, color }) => (
             <MaterialCommunityIcons
               name="card-search"
-              color={color}
+              color={focused ? COLORS.primary : color}
               size={26}
             />
           ),
