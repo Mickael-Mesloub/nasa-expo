@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { COLORS, SIZES } from '../../core/theme';
 import { ActivityIndicator } from 'react-native-paper';
 import IconButton from './IconButton';
@@ -28,10 +28,6 @@ const DailyPicture = () => {
     error,
     refetch,
   } = useGetDailyPicture();
-
-  useEffect(() => {
-    console.log(dailyPicture);
-  }, [dailyPicture]);
 
   return (
     <View style={styles.container}>

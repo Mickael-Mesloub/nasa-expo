@@ -27,7 +27,7 @@ export const useGetDailyPicture = ({
 }: UseGetDailyPictureOptions = {}) => {
   return useQuery<ExtractFnReturnType<QueryFnType>>({
     ...config,
-    queryKey: ['dailyPicture'],
-    queryFn: () => getDailyPicture(),
+    queryKey: ['dailyPicture'], // a unique key tied to this specific query allowing refetching, caching and sharing the query all accross the app.
+    queryFn: () => getDailyPicture(), // a function that returns a promise that resolves the data or throws an error if not able to resolve the data.
   });
 };

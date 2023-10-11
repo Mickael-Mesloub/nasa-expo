@@ -26,9 +26,11 @@ export type QueryConfig<QueryFnType extends (...args: any) => any> = Omit<
   'queryKey' | 'queryFn'
 >;
 
-export type MutationConfig<MutationFnType extends (...args: any) => any> =
-  UseMutationOptions<
-    ExtractFnReturnType<MutationFnType>,
-    AxiosError,
-    Parameters<MutationFnType>[0]
-  >;
+// Mutations are used to modify data on the server
+
+// export type MutationConfig<MutationFnType extends (...args: any) => any> =
+//   UseMutationOptions<
+//     ExtractFnReturnType<MutationFnType>,
+//     AxiosError,
+//     Parameters<MutationFnType>[0]
+//   >;
