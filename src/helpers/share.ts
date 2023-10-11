@@ -1,5 +1,5 @@
 import { Share } from 'react-native';
-import { PictureDto } from '../models/picture.dto';
+import { PictureDto } from '../models/picture/picture.dto';
 
 export const sharePicture = async (data: PictureDto) => {
   try {

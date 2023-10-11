@@ -1,7 +1,5 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import React, { useEffect, useState } from 'react';
-import { fetchDailyPicture } from '../../api/fetchDailyPicture';
-import { PictureDto, Optional } from '../../models/picture.dto';
+import React, { useEffect } from 'react';
 import { COLORS, SIZES } from '../../core/theme';
 import { ActivityIndicator } from 'react-native-paper';
 import IconButton from './IconButton';
@@ -9,36 +7,48 @@ import { sharePicture } from '../../helpers/share';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { HomeStackParamsList } from '../navigation/types/HomeStackParamsList';
+import { useGetDailyPicture } from '../../api/picture/getDailyPicture';
 
 const DailyPicture = () => {
-  const [data, setData] = useState<Optional<PictureDto>>();
-
   const navigation =
     useNavigation<NativeStackNavigationProp<HomeStackParamsList>>();
 
-  /**
-   * !IMPORTANT : Move the fetch function to api > hooks
+  /** !REMAINING :
+   *
+   * configure error handling
+   * create toast (ErrorBox)
+   * check refetch() function
+   *
    */
 
+  const {
+    data: dailyPicture,
+    isLoading,
+    isError,
+    error,
+    refetch,
+  } = useGetDailyPicture();
+
   useEffect(() => {
-    fetchDailyPicture()
-      .then((data) => setData(data))
-      .catch((error) => console.log(error.message));
-  }, []);
+    console.log(dailyPicture);
+  }, [dailyPicture]);
 
   return (
     <View style={styles.container}>
-      {data?.url ? (
+      {isLoading && (
+        <ActivityIndicator size={'large'} color={COLORS.secondary} />
+      )}
+      {dailyPicture && !isLoading && (
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate('DetailsScreen', { date: data.date })
+            navigation.navigate('DetailsScreen', { date: dailyPicture.date })
           }
         >
           <View style={styles.picOfTheDayCard}>
             <View style={styles.picOfTheDayTextsWrapper}>
               <Text style={styles.mainTitle}>Picture Of the Day</Text>
 
-              <Text style={styles.picOfTheDayDate}>{data?.date}</Text>
+              <Text style={styles.picOfTheDayDate}>{dailyPicture?.date}</Text>
               <View style={styles.iconWrapper}>
                 <IconButton
                   iconOptions={{
@@ -46,26 +56,24 @@ const DailyPicture = () => {
                     size: SIZES.large,
                     color: COLORS.tertiary,
                   }}
-                  onPress={() => sharePicture(data)}
+                  onPress={() => sharePicture(dailyPicture)}
                 />
               </View>
             </View>
             <Image
-              source={{ uri: data?.url }}
+              source={{ uri: dailyPicture?.url }}
               style={styles.picOfTheDayImage}
             />
             <View style={{ paddingTop: SIZES.small }}>
-              <Text style={styles.picOfTheDayTitle}>{data?.title}</Text>
-              {data.copyright && (
+              <Text style={styles.picOfTheDayTitle}>{dailyPicture?.title}</Text>
+              {dailyPicture.copyright && (
                 <Text style={styles.picOfTheDayCopyright}>
-                  Copyright: {data?.copyright}
+                  Copyright: {dailyPicture?.copyright}
                 </Text>
               )}
             </View>
           </View>
         </TouchableOpacity>
-      ) : (
-        <ActivityIndicator size={'large'} color={COLORS.secondary} />
       )}
     </View>
   );

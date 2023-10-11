@@ -2,7 +2,7 @@ import { View, Text } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { fetchPictures } from '../../api/fetchPictures';
 import { api_key } from '../../api/axios';
-import { PicturesDto } from '../../models/picture.dto';
+import { PicturesDto } from '../../models/picture/picture.dto';
 
 const PictureGallery = () => {
   const [data, setData] = useState<PicturesDto>([]);

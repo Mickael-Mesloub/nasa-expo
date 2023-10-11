@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const pictureSchema = z.object({
+export const pictureSchemaDto = z.object({
   title: z.string().optional(),
   copyright: z.string().optional(),
   date: z.string(),
@@ -10,7 +10,7 @@ export const pictureSchema = z.object({
   thumbs: z.string().optional(),
 });
 
-export const picturesSchema = z.array(pictureSchema);
-export type PictureDto = z.infer<typeof pictureSchema>;
+export const picturesSchema = z.array(pictureSchemaDto);
+export type PictureDto = z.infer<typeof pictureSchemaDto>;
 export type PicturesDto = z.infer<typeof picturesSchema>;
 export type Optional<T> = T | null | undefined;

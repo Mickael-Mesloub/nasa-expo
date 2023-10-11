@@ -1,5 +1,5 @@
 import { axios } from './axios';
-import { picturesSchema } from '../models/picture.dto';
+import { picturesSchema } from '../models/picture/picture.dto';
 
 type QueryParams = {
   date?: string;

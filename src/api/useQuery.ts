@@ -1,3 +1,0 @@
-/**
- * Configure react useQuery here
- */
