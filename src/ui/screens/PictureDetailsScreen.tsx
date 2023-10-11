@@ -1,18 +1,15 @@
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Text, StyleSheet } from 'react-native';
 import React from 'react';
+import { usePictureDetailsSreenRoute } from '../navigation/hooks/useRouteHooks';
 
-interface Props {
-  route: undefined;
-  navigation: () => void;
-}
-
-const DetailsScreen = ({ route, navigation }: Props) => {
-  const { date } = route.params;
+const PictureDetailsScreen = () => {
+  const route = usePictureDetailsSreenRoute();
+  const { picture } = route.params;
 
   return (
     <SafeAreaView>
-      <Text>date : {JSON.stringify(date)}</Text>
+      <Text>{picture.title}</Text>
     </SafeAreaView>
   );
 };
@@ -24,4 +21,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DetailsScreen;
+export default PictureDetailsScreen;

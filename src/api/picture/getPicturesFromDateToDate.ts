@@ -2,10 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { ExtractFnReturnType, QueryConfig } from '../reactQuery';
 import { api_key, axios } from '../axios';
 import { PicturesDto, picturesSchema } from '../../models/picture/picture.dto';
-import {
-  PictureDtoToEntity,
-  PictureEntity,
-} from '../../models/picture/picture.entity';
+import { PictureEntity } from '../../models/picture/picture.entity';
 
 export const getPicturesFromDateToDate = async (
   start_date: string,

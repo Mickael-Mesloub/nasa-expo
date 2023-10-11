@@ -3,7 +3,7 @@ import { ExtractFnReturnType, QueryConfig } from '../reactQuery';
 import { api_key, axios } from '../axios';
 import { PictureDto, pictureSchemaDto } from '../../models/picture/picture.dto';
 import {
-  PictureDtoToEntity,
+  pictureDtoToEntity,
   PictureEntity,
 } from '../../models/picture/picture.entity';
 
@@ -13,7 +13,7 @@ export const getDailyPicture = async (): Promise<PictureEntity> => {
       api_key: api_key,
     },
   });
-  return PictureDtoToEntity(pictureSchemaDto.parse(response.data));
+  return pictureDtoToEntity(pictureSchemaDto.parse(response.data));
 };
 
 type QueryFnType = typeof getDailyPicture;

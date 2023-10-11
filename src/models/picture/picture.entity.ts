@@ -11,7 +11,7 @@ export interface PictureEntity {
   media_type?: string;
 }
 
-export const PictureDtoToEntity = (dto: PictureDto): PictureEntity => {
+export const pictureDtoToEntity = (dto: PictureDto): PictureEntity => {
   return {
     title: dto.title,
     copyright: dto.copyright,

@@ -1,24 +1,16 @@
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { HomeStackParamsList } from './types/HomeStackParamsList';
 import HomeStack from './HomeStack';
 import GalleryStack from './GalleryStack';
-import { GalleryStackParamsList } from './types/GalleryStackParamsList';
-import { SearchStackParamsList } from './types/SearchStackParamsList';
 import SearchStack from './SearchStack';
 import { COLORS, SIZES } from '../../core/theme';
-
-type TabNavigatorParamsList = {
-  HomeStack: HomeStackParamsList;
-  GalleryStack: GalleryStackParamsList;
-  SearchStack: SearchStackParamsList;
-};
+import { TabNavigatorParamsList } from './types/TabNavigatorParamsList';
 
 const Tab = createMaterialBottomTabNavigator<TabNavigatorParamsList>();
 
-const TabNavigation = () => {
+const AppTab = () => {
   return (
-    <Tab.Navigator activeColor={COLORS.primary}>
+    <Tab.Navigator activeColor={COLORS.primary} initialRouteName="HomeStack">
       <Tab.Screen
         name="HomeStack"
         component={HomeStack}
@@ -65,4 +57,4 @@ const TabNavigation = () => {
   );
 };
 
-export default TabNavigation;
+export default AppTab;

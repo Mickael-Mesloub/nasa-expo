@@ -4,20 +4,19 @@ import { COLORS, SIZES } from '../../core/theme';
 import { ActivityIndicator } from 'react-native-paper';
 import IconButton from './IconButton';
 import { sharePicture } from '../../helpers/share';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { HomeStackParamsList } from '../navigation/types/HomeStackParamsList';
 import { useGetDailyPicture } from '../../api/picture/getDailyPicture';
+import { usePictureDetailsStackNavigation } from '../navigation/hooks/useNavigationHooks';
+import { usePictureDetailsSreenRoute } from '../navigation/hooks/useRouteHooks';
 
 const DailyPicture = () => {
-  const navigation =
-    useNavigation<NativeStackNavigationProp<HomeStackParamsList>>();
+  const navigation = usePictureDetailsStackNavigation();
 
-  /** !REMAINING :
+  /** TODO:
    *
    * configure error handling
    * create toast (ErrorBox)
    * check refetch() function
+   * fix the navigate to PictureDetailsScreen (not working atm)
    *
    */
 
@@ -37,7 +36,9 @@ const DailyPicture = () => {
       {dailyPicture && !isLoading && (
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate('DetailsScreen', { date: dailyPicture.date })
+            navigation.navigate('PictureDetailsScreen', {
+              picture: dailyPicture,
+            })
           }
         >
           <View style={styles.picOfTheDayCard}>

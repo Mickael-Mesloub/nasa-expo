@@ -7,7 +7,7 @@ import { Image } from 'expo-image';
 import { formatDateHyphenUK } from '../../utils/date/date.utils';
 
 const PictureGallery = () => {
-  /** !REMAINING :
+  /** TODO:
    *
    * configure error handling
    * create toast (ErrorBox)

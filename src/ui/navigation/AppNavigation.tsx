@@ -1,8 +1,8 @@
 import React from 'react';
-import TabNavigation from './TabNavigation';
+import AppStack from './AppStack';
 
 const AppNavigation = () => {
-  return <TabNavigation />;
+  return <AppStack />;
 };
 
 export default AppNavigation;
