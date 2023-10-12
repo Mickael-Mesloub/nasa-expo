@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { PictureDetailsStackParamList } from './types/PictureDetailsStackParamList';
-import PictureDetailsScreen from '../screens/PictureDetailsScreen';
+import PictureDetailsScreen from '../screens/PictureDetailsScreen/PictureDetailsScreen';
 
 const Stack = createNativeStackNavigator<PictureDetailsStackParamList>();
 

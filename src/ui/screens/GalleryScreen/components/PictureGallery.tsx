@@ -1,11 +1,11 @@
 import { View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import React from 'react';
-import { useGetPicturesFromDateToDate } from '../../api/picture/getPicturesFromDateToDate';
+import { useGetPicturesFromDateToDate } from '../../../../api/picture/getPicturesFromDateToDate';
 import { ActivityIndicator } from 'react-native-paper';
-import { COLORS, SIZES } from '../../core/theme';
+import { COLORS, SIZES } from '../../../../core/theme';
 import { Image } from 'expo-image';
-import { formatDateHyphenUK } from '../../utils/date/date.utils';
-import { useAppStackNavigation } from '../navigation/hooks/useNavigationHooks';
+import { formatDateHyphenUK } from '../../../../utils/date/date.utils';
+import { useAppStackNavigation } from '../../../navigation/hooks/useNavigationHooks';
 
 const PictureGallery = () => {
   /** TODO:

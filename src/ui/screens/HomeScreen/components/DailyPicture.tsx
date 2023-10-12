@@ -1,11 +1,11 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
-import { COLORS, SIZES } from '../../core/theme';
+import { COLORS, SIZES } from '../../../../core/theme';
 import { ActivityIndicator } from 'react-native-paper';
-import IconButton from './IconButton';
-import { sharePicture } from '../../helpers/share';
-import { useGetDailyPicture } from '../../api/picture/getDailyPicture';
-import { useAppStackNavigation } from '../navigation/hooks/useNavigationHooks';
+import IconButton from '../../../components/IconButton';
+import { sharePicture } from '../../../../helpers/share';
+import { useGetDailyPicture } from '../../../../api/picture/getDailyPicture';
+import { useAppStackNavigation } from '../../../navigation/hooks/useNavigationHooks';
 
 const DailyPicture = () => {
   const navigation = useAppStackNavigation();

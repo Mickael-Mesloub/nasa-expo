@@ -1,13 +1,13 @@
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React from 'react';
-import PictureGallery from '../components/PictureGallery';
+import DailyPicture from './components/DailyPicture';
 
-const GalleryScreen = () => {
+const HomeScreen = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <PictureGallery />
+      <DailyPicture />
     </SafeAreaView>
   );
 };
 
-export default GalleryScreen;
+export default HomeScreen;
