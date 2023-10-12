@@ -1,21 +1,19 @@
 import React from 'react';
 import AppTab from './AppTab';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { AppStackParamsList } from './types/AppStackParamsList';
-import { PictureDetailsStack } from './PictureDetailsStack';
+import { AppStackParamList } from './types/AppStackParamList';
+import PictureDetailsStack from './PictureDetailsStack';
 
-const Stack = createNativeStackNavigator<AppStackParamsList>();
+const Stack = createNativeStackNavigator<AppStackParamList>();
 
 const AppStack = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="AppTab"
-        component={AppTab}
-        options={{
-          headerShown: false,
-        }}
-      />
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="AppTab" component={AppTab} />
       <Stack.Screen
         name="PictureDetailsStack"
         component={PictureDetailsStack}

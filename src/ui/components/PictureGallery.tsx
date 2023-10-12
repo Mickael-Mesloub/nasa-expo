@@ -5,6 +5,7 @@ import { ActivityIndicator } from 'react-native-paper';
 import { COLORS, SIZES } from '../../core/theme';
 import { Image } from 'expo-image';
 import { formatDateHyphenUK } from '../../utils/date/date.utils';
+import { useAppStackNavigation } from '../navigation/hooks/useNavigationHooks';
 
 const PictureGallery = () => {
   /** TODO:
@@ -15,6 +16,8 @@ const PictureGallery = () => {
    * add a loadMore function fetching 10 more pictures (chech useInfiniteQuery() from React Query)
    *
    */
+
+  const navigation = useAppStackNavigation();
 
   const today = new Date();
   const DAY = 86_400_000;
@@ -42,7 +45,16 @@ const PictureGallery = () => {
           renderItem={({ item }) => {
             return (
               <View style={styles.galleryPictureCard}>
-                <TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate('PictureDetailsStack', {
+                      screen: 'PictureDetailsScreen',
+                      params: {
+                        picture: item,
+                      },
+                    })
+                  }
+                >
                   <Image
                     style={styles.galleryPicture}
                     source={{

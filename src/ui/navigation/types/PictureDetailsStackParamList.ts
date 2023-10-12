@@ -1,6 +1,6 @@
 import { PictureEntity } from '../../../models/picture/picture.entity';
 
-export type PictureDetailsStackParamsList = {
+export type PictureDetailsStackParamList = {
   PictureDetailsScreen: {
     picture: PictureEntity;
   };

@@ -5,18 +5,16 @@ import { ActivityIndicator } from 'react-native-paper';
 import IconButton from './IconButton';
 import { sharePicture } from '../../helpers/share';
 import { useGetDailyPicture } from '../../api/picture/getDailyPicture';
-import { usePictureDetailsStackNavigation } from '../navigation/hooks/useNavigationHooks';
-import { usePictureDetailsSreenRoute } from '../navigation/hooks/useRouteHooks';
+import { useAppStackNavigation } from '../navigation/hooks/useNavigationHooks';
 
 const DailyPicture = () => {
-  const navigation = usePictureDetailsStackNavigation();
+  const navigation = useAppStackNavigation();
 
   /** TODO:
    *
    * configure error handling
    * create toast (ErrorBox)
    * check refetch() function
-   * fix the navigate to PictureDetailsScreen (not working atm)
    *
    */
 
@@ -36,8 +34,11 @@ const DailyPicture = () => {
       {dailyPicture && !isLoading && (
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate('PictureDetailsScreen', {
-              picture: dailyPicture,
+            navigation.navigate('PictureDetailsStack', {
+              screen: 'PictureDetailsScreen',
+              params: {
+                picture: dailyPicture,
+              },
             })
           }
         >

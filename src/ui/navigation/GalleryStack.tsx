@@ -1,8 +1,8 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import GalleryScreen from '../screens/GalleryScreen';
-import { GalleryStackParamsList } from './types/GalleryStackParamsList';
+import { GalleryStackParamList } from './types/GalleryStackParamList';
 
-const Stack = createNativeStackNavigator<GalleryStackParamsList>();
+const Stack = createNativeStackNavigator<GalleryStackParamList>();
 
 const GalleryStack = () => {
   return (

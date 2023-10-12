@@ -4,9 +4,9 @@ import HomeStack from './HomeStack';
 import GalleryStack from './GalleryStack';
 import SearchStack from './SearchStack';
 import { COLORS, SIZES } from '../../core/theme';
-import { TabNavigatorParamsList } from './types/TabNavigatorParamsList';
+import { TabNavigatorParamList } from './types/TabNavigatorParamList';
 
-const Tab = createMaterialBottomTabNavigator<TabNavigatorParamsList>();
+const Tab = createMaterialBottomTabNavigator<TabNavigatorParamList>();
 
 const AppTab = () => {
   return (

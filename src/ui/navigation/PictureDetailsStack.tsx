@@ -1,10 +1,10 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { PictureDetailsStackParamsList } from './types/PictureDetailsStackParamsList';
+import { PictureDetailsStackParamList } from './types/PictureDetailsStackParamList';
 import PictureDetailsScreen from '../screens/PictureDetailsScreen';
 
-const Stack = createNativeStackNavigator<PictureDetailsStackParamsList>();
+const Stack = createNativeStackNavigator<PictureDetailsStackParamList>();
 
-export const PictureDetailsStack = () => {
+const PictureDetailsStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -14,3 +14,4 @@ export const PictureDetailsStack = () => {
     </Stack.Navigator>
   );
 };
+export default PictureDetailsStack;
