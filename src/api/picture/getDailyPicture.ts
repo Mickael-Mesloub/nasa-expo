@@ -7,9 +7,12 @@ import {
   PictureEntity,
 } from '../../models/picture/picture.entity';
 
-export const getDailyPicture = async (): Promise<PictureEntity> => {
+export const getDailyPicture = async (
+  date?: string
+): Promise<PictureEntity> => {
   const response = await axios.get<PictureDto>('', {
     params: {
+      date: date,
       api_key: api_key,
     },
   });
@@ -27,6 +30,7 @@ export const useGetDailyPicture = ({
 }: UseGetDailyPictureOptions = {}) => {
   return useQuery<ExtractFnReturnType<QueryFnType>>({
     ...config,
+
     queryKey: ['dailyPicture'], // a unique key tied to this specific query allowing refetching, caching and sharing the query all accross the app.
     queryFn: () => getDailyPicture(), // a function that returns a promise that resolves the data or throws an error if not able to resolve the data.
   });
