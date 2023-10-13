@@ -10,6 +10,7 @@
     "postinstall": "rndebugger-open"
   },
   "dependencies": {
+    "@react-native-community/datetimepicker": "7.2.0",
     "@react-navigation/material-bottom-tabs": "^6.2.17",
     "@react-navigation/native": "^6.1.8",
     "@react-navigation/native-stack": "^6.9.14",
