@@ -1,4 +1,4 @@
-import { Text, StyleSheet, View, ScrollView } from 'react-native';
+import { Text, StyleSheet, View, ScrollView, Dimensions } from 'react-native';
 import React from 'react';
 import { usePictureDetailsSreenRoute } from '../../../navigation/hooks/useRouteHooks';
 import { Image } from 'expo-image';
@@ -6,6 +6,8 @@ import { COLORS, SIZES } from '../../../../core/theme';
 import IconButton from '../../../components/IconButton';
 import { useAppStackNavigation } from '../../../navigation/hooks/useNavigationHooks';
 import { sharePicture } from '../../../../helpers/share';
+
+const screenHeight = Dimensions.get('window').height;
 
 const PictureDetails = () => {
   const route = usePictureDetailsSreenRoute();
@@ -35,12 +37,12 @@ const PictureDetails = () => {
               onPress={() => sharePicture(picture)}
             />
           </View>
-          <Image
-            source={{ uri: picture?.url }}
-            style={styles.pictureDetailsImage}
-            contentFit="cover"
-          />
           <ScrollView>
+            <Image
+              source={{ uri: picture?.url }}
+              style={styles.pictureDetailsImage}
+              contentFit="cover"
+            />
             <View style={styles.pictureDetailsPicLegendWrapper}>
               <Text style={styles.pictureDetailsPicTitle}>
                 {picture?.title}
@@ -83,7 +85,7 @@ const styles = StyleSheet.create({
 
   pictureDetailsImage: {
     width: '100%',
-    height: '50%',
+    height: screenHeight,
   },
 
   pictureDetailsPicDate: {
