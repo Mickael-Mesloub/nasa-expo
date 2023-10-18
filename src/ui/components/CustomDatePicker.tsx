@@ -7,6 +7,10 @@ import { getDailyPicture } from '../../api/picture/getDailyPicture';
 import { formatDateHyphenUK } from '../../utils/date/date.utils';
 import { PictureEntity } from '../../models/picture/picture.entity';
 
+/** !TODO
+ * Reorganize logic
+ */
+
 export type DatePickerModeType = 'date' | 'time' | 'datetime' | undefined;
 
 interface Props {

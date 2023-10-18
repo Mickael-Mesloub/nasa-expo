@@ -4,6 +4,10 @@ import { DAY } from '../../core/dates';
 import { PictureEntity } from '../../models/picture/picture.entity';
 import { formatDateHyphenUK } from '../date/date.utils';
 
+/** !TODO
+ * Reorganize logic
+ */
+
 interface Props {
   newStartDate: Date;
   setNewStartDate: React.Dispatch<React.SetStateAction<Date>>;

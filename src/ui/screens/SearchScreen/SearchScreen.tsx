@@ -8,7 +8,7 @@ import CustomDatePicker, {
 import { useGetDailyPicture } from '../../../api/picture/getDailyPicture';
 import { useAppStackNavigation } from '../../navigation/hooks/useNavigationHooks';
 import PictureCard from '../../components/PictureCard';
-import { onPressNavigate } from '../../../utils/navigation/onPressNavigate.utils';
+import { onPressNavigate } from '../../../utils/navigation/navigation.utils';
 
 const SearchScreen = () => {
   const [date, setDate] = useState(new Date());
