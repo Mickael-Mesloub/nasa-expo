@@ -7,7 +7,6 @@ export interface PictureEntity {
   explanation: string;
   hdurl?: string;
   url: string;
-  thumbs?: string;
   media_type?: string;
 }
 
@@ -19,7 +18,6 @@ export const pictureDtoToEntity = (dto: PictureDto): PictureEntity => {
     explanation: dto.explanation,
     hdurl: dto.hdurl,
     url: dto.url,
-    thumbs: dto.thumbs,
     media_type: dto.media_type,
   };
 };

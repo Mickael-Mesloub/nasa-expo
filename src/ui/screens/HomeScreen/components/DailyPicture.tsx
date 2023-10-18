@@ -1,10 +1,9 @@
 import { View, StyleSheet } from 'react-native';
 import React from 'react';
-import { COLORS } from '../../../../core/theme';
-import { ActivityIndicator } from 'react-native-paper';
 import { useGetDailyPicture } from '../../../../api/picture/getDailyPicture';
 import { useAppStackNavigation } from '../../../navigation/hooks/useNavigationHooks';
 import PictureCard from '../../../components/PictureCard';
+import Loader from '../../../components/Loader';
 
 const DailyPicture = () => {
   const { data: dailyPicture, isLoading } = useGetDailyPicture();
@@ -24,9 +23,7 @@ const DailyPicture = () => {
 
   return (
     <View style={styles.container}>
-      {isLoading && (
-        <ActivityIndicator size={'large'} color={COLORS.secondary} />
-      )}
+      {isLoading && <Loader />}
 
       {dailyPicture && !isLoading && (
         <PictureCard

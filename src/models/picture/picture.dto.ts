@@ -7,7 +7,6 @@ export const pictureSchemaDto = z.object({
   explanation: z.string(),
   hdurl: z.string().optional(),
   url: z.string(),
-  thumbs: z.string().optional(),
   media_type: z.string().optional(),
 });
 

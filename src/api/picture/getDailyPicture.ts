@@ -14,6 +14,7 @@ export const getDailyPicture = async (
     params: {
       date: date,
       api_key: api_key,
+      thumbs: true,
     },
   });
   return pictureDtoToEntity(pictureSchemaDto.parse(response.data));

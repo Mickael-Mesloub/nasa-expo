@@ -6,11 +6,11 @@ import DateTimePicker, {
 
 export type DatePickerModeType = 'date' | 'time' | 'datetime' | undefined;
 
-type Props = {
+interface Props {
   date: Date;
   mode: DatePickerModeType;
   onChange: (event: DateTimePickerEvent, selectedDate?: Date) => void;
-};
+}
 
 const CustomDatePicker = ({ date, onChange, mode }: Props) => {
   return (

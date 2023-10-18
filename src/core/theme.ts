@@ -1,5 +1,3 @@
-import { Colors } from 'react-native/Libraries/NewAppScreen';
-
 const COLORS = <ColorType>{
   primary: '#009688',
   secondary: 'rgba(255, 55, 24, 0.70)',

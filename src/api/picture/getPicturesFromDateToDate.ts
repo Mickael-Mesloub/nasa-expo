@@ -3,7 +3,6 @@ import { ExtractFnReturnType, QueryConfig } from '../reactQuery';
 import { api_key, axios } from '../axios';
 import { PicturesDto, picturesSchema } from '../../models/picture/picture.dto';
 import { PictureEntity } from '../../models/picture/picture.entity';
-import { useState } from 'react';
 
 export const getPicturesFromDateToDate = async (
   start_date: string,
@@ -14,6 +13,7 @@ export const getPicturesFromDateToDate = async (
       api_key: api_key,
       start_date: start_date,
       end_date: end_date,
+      thumbs: true,
     },
   });
   return picturesSchema.parse(response.data).reverse();

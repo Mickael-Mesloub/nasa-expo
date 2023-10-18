@@ -13,38 +13,29 @@ import {
 import { useAppStackNavigation } from '../../navigation/hooks/useNavigationHooks';
 import PictureCard from '../../components/PictureCard';
 import { formatDateHyphenUK } from '../../../utils/date/date.utils';
+import { onPressNavigate } from '../../../utils/navigation/onPressNavigate.utils';
 
 const SearchScreen = () => {
   const [date, setDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
   const [mode, setMode] = useState<DatePickerModeType>(undefined);
 
-  const { data: dailyPicture, isLoading } = useGetDailyPicture();
+  const { data: dailyPicture } = useGetDailyPicture();
   const [newPicture, setNewPicture] = useState(dailyPicture);
 
   const navigation = useAppStackNavigation();
-
-  const onPressNavigate = () => {
-    if (newPicture) {
-      navigation.navigate('PictureDetailsStack', {
-        screen: 'PictureDetailsScreen',
-        params: {
-          picture: newPicture,
-        },
-      });
-    }
-  };
 
   const onChange = (event: DateTimePickerEvent, selectedDate?: Date) => {
     if (selectedDate) {
       setDate(selectedDate);
       setIsOpen(false);
-      getDailyPicture(formatDateHyphenUK(date)).then((data) =>
+      getDailyPicture(formatDateHyphenUK(selectedDate)).then((data) =>
         setNewPicture(data)
       );
     }
     setMode('date');
   };
+
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity
@@ -58,7 +49,9 @@ const SearchScreen = () => {
       ) : null}
       {newPicture && (
         <PictureCard
-          onPressNavigate={onPressNavigate}
+          onPressNavigate={() =>
+            onPressNavigate({ picture: newPicture, navigation: navigation })
+          }
           dailyPicture={newPicture}
         />
       )}
@@ -70,6 +63,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.tertiary,
+    justifyContent: 'center',
   },
   openPicker: {
     marginVertical: SIZES.xxLarge,

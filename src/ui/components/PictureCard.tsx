@@ -1,22 +1,45 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import React from 'react';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
+import React, { useCallback, useState } from 'react';
 import { COLORS, SIZES } from '../../core/theme';
 import { Image } from 'expo-image';
 import { sharePicture } from '../../helpers/share';
 import IconButton from './IconButton';
 import { PictureEntity } from '../../models/picture/picture.entity';
+import YoutubePlayer from 'react-native-youtube-iframe';
+import { youtubeLinkParser } from '../../utils/youtubeLinks/youtubeLinks.utils';
 
-type Props = {
+interface Props {
   onPressNavigate: () => void;
   dailyPicture: PictureEntity;
-};
+}
 
 const PictureCard = ({ onPressNavigate, dailyPicture }: Props) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const onStateChange = useCallback((state: string) => {
+    if (state === 'ended') {
+      setIsPlaying(false);
+    }
+  }, []);
+
   return (
-    <TouchableOpacity onPress={onPressNavigate}>
+    <Pressable
+      onPress={
+        dailyPicture?.media_type === 'image' ? onPressNavigate : () => null
+      }
+    >
       <View style={styles.picOfTheDayCard}>
-        <View style={styles.picOfTheDayTextsWrapper}>
-          <Text style={styles.mainTitle}>Picture Of the Day</Text>
+        <Pressable
+          style={styles.picOfTheDayTextsWrapper}
+          onPress={
+            dailyPicture?.media_type === 'video' ? onPressNavigate : () => null
+          }
+        >
+          <Text style={styles.mainTitle}>
+            {dailyPicture?.media_type === 'image'
+              ? 'Picture Of the Day'
+              : 'Video of the Day'}
+          </Text>
           <Text style={styles.picOfTheDayDate}>{dailyPicture?.date}</Text>
           <View style={styles.iconWrapper}>
             <IconButton
@@ -28,11 +51,24 @@ const PictureCard = ({ onPressNavigate, dailyPicture }: Props) => {
               onPress={() => sharePicture(dailyPicture)}
             />
           </View>
-        </View>
-        <Image
-          source={{ uri: dailyPicture?.url }}
-          style={styles.picOfTheDayImage}
-        />
+        </Pressable>
+
+        {dailyPicture?.media_type === 'video' && (
+          <YoutubePlayer
+            height={225}
+            play={isPlaying}
+            videoId={youtubeLinkParser(dailyPicture?.url)}
+            onChangeState={onStateChange}
+            webViewStyle={styles.webView}
+          />
+        )}
+
+        {dailyPicture?.media_type === 'image' && (
+          <Image
+            source={{ uri: dailyPicture?.url }}
+            style={styles.picOfTheDayImage}
+          />
+        )}
         <View style={{ paddingTop: SIZES.small }}>
           <Text style={styles.picOfTheDayTitle}>{dailyPicture?.title}</Text>
           {dailyPicture.copyright && (
@@ -42,7 +78,7 @@ const PictureCard = ({ onPressNavigate, dailyPicture }: Props) => {
           )}
         </View>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
@@ -50,7 +86,7 @@ const styles = StyleSheet.create({
   picOfTheDayCard: {
     padding: SIZES.medium,
     marginVertical: SIZES.medium,
-    backgroundColor: COLORS.lightGrey,
+    backgroundColor: COLORS.primaryTransp,
   },
 
   picOfTheDayTextsWrapper: {
@@ -76,6 +112,12 @@ const styles = StyleSheet.create({
   picOfTheDayImage: {
     width: '100%',
     height: 300,
+    marginTop: SIZES.small,
+    borderRadius: SIZES.small,
+  },
+
+  webView: {
+    width: '100%',
     marginTop: SIZES.small,
     borderRadius: SIZES.small,
   },
