@@ -1,18 +1,13 @@
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import { COLORS, SIZES } from '../../../core/theme';
 import CustomDatePicker, {
   DatePickerModeType,
 } from '../../components/CustomDatePicker';
-import { DateTimePickerEvent } from '@react-native-community/datetimepicker';
-import {
-  getDailyPicture,
-  useGetDailyPicture,
-} from '../../../api/picture/getDailyPicture';
+import { useGetDailyPicture } from '../../../api/picture/getDailyPicture';
 import { useAppStackNavigation } from '../../navigation/hooks/useNavigationHooks';
 import PictureCard from '../../components/PictureCard';
-import { formatDateHyphenUK } from '../../../utils/date/date.utils';
 import { onPressNavigate } from '../../../utils/navigation/onPressNavigate.utils';
 
 const SearchScreen = () => {
@@ -25,17 +20,6 @@ const SearchScreen = () => {
 
   const navigation = useAppStackNavigation();
 
-  const onChange = (event: DateTimePickerEvent, selectedDate?: Date) => {
-    if (selectedDate) {
-      setDate(selectedDate);
-      setIsOpen(false);
-      getDailyPicture(formatDateHyphenUK(selectedDate)).then((data) =>
-        setNewPicture(data)
-      );
-    }
-    setMode('date');
-  };
-
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity
@@ -45,7 +29,14 @@ const SearchScreen = () => {
         <Text style={styles.openPickerText}>{date?.toDateString()} </Text>
       </TouchableOpacity>
       {isOpen ? (
-        <CustomDatePicker date={date} onChange={onChange} mode={mode} />
+        <CustomDatePicker
+          date={date}
+          mode={mode}
+          setIsOpen={setIsOpen}
+          setNewPicture={setNewPicture}
+          setMode={setMode}
+          setDate={setDate}
+        />
       ) : null}
       {newPicture && (
         <PictureCard

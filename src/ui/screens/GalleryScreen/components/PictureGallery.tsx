@@ -41,8 +41,6 @@ const PictureGallery = () => {
 
   return (
     <View style={styles.container}>
-      {/* {isLoading && <Loader />} */}
-
       {pictures && !isLoading && (
         <FlatList
           data={newPictures}
