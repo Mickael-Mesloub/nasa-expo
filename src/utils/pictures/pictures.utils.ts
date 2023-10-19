@@ -25,7 +25,7 @@ export const loadMorePictures = ({
   newPictures,
   setNewPictures,
 }: Props) => {
-  const updatedStartDate = new Date(newStartDate.getTime() - 5 * DAY);
+  const updatedStartDate = new Date(newStartDate.getTime() - 9 * DAY);
   setNewStartDate(updatedStartDate);
   getPicturesFromDateToDate(
     formatDateHyphenUK(updatedStartDate),
