@@ -9,7 +9,7 @@ import en from '../assets/translation/en.json';
  * Complete fr and en json files
  */
 
-const defaultLanguage = 'en';
+const defaultLanguage = 'fr';
 const languages = ['fr', 'en'];
 const resources = {
   fr: {

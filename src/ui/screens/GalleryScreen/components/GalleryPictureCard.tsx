@@ -2,7 +2,6 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Image } from 'expo-image';
 import React from 'react';
 import { SIZES } from '../../../../core/theme';
-import YoutubeImg from '../../../../assets/img/youtube.jpeg';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { AppStackParamList } from '../../../navigation/types/AppStackParamList';
 import { PictureEntity } from '../../../../models/picture/picture.entity';
@@ -33,13 +32,9 @@ const GalleryPictureCard = ({ navigation, item }: Props) => {
         <Text>{item?.date} </Text>
         <Image
           style={styles.galleryPicture}
-          source={
-            item?.media_type === 'image'
-              ? {
-                  uri: item?.url,
-                }
-              : YoutubeImg
-          }
+          source={{
+            uri: item?.media_type === 'image' ? item?.url : item.thumbnail_url,
+          }}
           contentFit="cover"
         />
       </TouchableOpacity>

@@ -8,6 +8,7 @@ export const pictureSchemaDto = z.object({
   hdurl: z.string().optional(),
   url: z.string(),
   media_type: z.string().optional(),
+  thumbnail_url: z.string().optional(),
 });
 
 export const picturesSchema = z.array(pictureSchemaDto);
