@@ -1,5 +1,5 @@
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
 import { COLORS, SIZES } from '../../../core/theme';
 import CustomDatePicker, {
@@ -22,12 +22,18 @@ const SearchScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <TouchableOpacity
-        style={styles.openPicker}
-        onPress={() => setIsOpen(true)}
-      >
-        <Text style={styles.openPickerText}>{date?.toDateString()} </Text>
-      </TouchableOpacity>
+      <View style={styles.findPictureHeader}>
+        <Text style={styles.findPictureTitle}>
+          Find a picture by its date of release
+        </Text>
+        <TouchableOpacity
+          style={styles.openPickerButton}
+          onPress={() => setIsOpen(true)}
+        >
+          <Text style={styles.openPickerText}>{date?.toDateString()} </Text>
+        </TouchableOpacity>
+      </View>
+
       {isOpen ? (
         <CustomDatePicker
           date={date}
@@ -54,16 +60,26 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.tertiary,
-    justifyContent: 'center',
+    justifyContent: 'space-around',
   },
-  openPicker: {
+  openPickerButton: {
     marginVertical: SIZES.xxLarge,
     padding: SIZES.xxSmall,
     alignSelf: 'center',
     alignItems: 'center',
-    backgroundColor: COLORS.primary,
+    backgroundColor: COLORS.secondary,
     width: 150,
     borderRadius: SIZES.xxSmall,
+  },
+
+  findPictureHeader: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+
+  findPictureTitle: {
+    fontWeight: '700',
+    textAlign: 'center',
   },
 
   openPickerText: {
