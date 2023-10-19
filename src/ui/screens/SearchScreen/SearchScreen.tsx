@@ -7,7 +7,7 @@ import CustomDatePicker, {
 } from '../../components/CustomDatePicker';
 import { useGetDailyPicture } from '../../../api/picture/getDailyPicture';
 import { useAppStackNavigation } from '../../navigation/hooks/useNavigationHooks';
-import PictureCard from '../../components/PictureCard';
+import PictureCard from '../../components/DailyPictureCard';
 import { onPressNavigate } from '../../../utils/navigation/navigation.utils';
 
 const SearchScreen = () => {

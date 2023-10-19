@@ -2,7 +2,7 @@ import { View, StyleSheet } from 'react-native';
 import React from 'react';
 import { useGetDailyPicture } from '../../../../api/picture/getDailyPicture';
 import { useAppStackNavigation } from '../../../navigation/hooks/useNavigationHooks';
-import PictureCard from '../../../components/PictureCard';
+import PictureCard from '../../../components/DailyPictureCard';
 import Loader from '../../../components/Loader';
 
 const DailyPicture = () => {
