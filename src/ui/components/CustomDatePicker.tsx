@@ -8,7 +8,7 @@ import { formatDateHyphenUK } from '../../utils/date/date.utils';
 import { PictureEntity } from '../../models/picture/picture.entity';
 
 /** !TODO
- * Reorganize logic
+ * Reorganize logic => see archive immo solo CustomDatePicker
  */
 
 export type DatePickerModeType = 'date' | 'time' | 'datetime' | undefined;

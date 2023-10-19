@@ -7,6 +7,11 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { AppStackParamList } from '../../../navigation/types/AppStackParamList';
 import { PictureEntity } from '../../../../models/picture/picture.entity';
 
+/**
+ * TODO :
+ * change the case when media_type === 'video' => img source = thumbnail_url
+ */
+
 interface Props {
   navigation: NativeStackNavigationProp<AppStackParamList>;
   item: PictureEntity;
