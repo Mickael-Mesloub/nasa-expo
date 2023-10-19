@@ -3,7 +3,7 @@ import React, { useCallback, useState } from 'react';
 import { COLORS, SIZES } from '../../core/theme';
 import { Image } from 'expo-image';
 import { sharePicture } from '../../helpers/share';
-import IconButton from './IconButton';
+import IconButton from './CustomIconButton';
 import { PictureEntity } from '../../models/picture/picture.entity';
 import YoutubePlayer from 'react-native-youtube-iframe';
 import { youtubeLinkParser } from '../../utils/youtubeLinks/youtubeLinks.utils';

@@ -8,7 +8,7 @@ interface Props {
   onPress: () => void;
 }
 
-const IconButton = ({ iconOptions, onPress }: Props) => {
+const CustomIconButton = ({ iconOptions, onPress }: Props) => {
   return (
     <TouchableOpacity hitSlop={10} onPress={onPress}>
       <Icon
@@ -20,4 +20,4 @@ const IconButton = ({ iconOptions, onPress }: Props) => {
   );
 };
 
-export default IconButton;
+export default CustomIconButton;

@@ -10,6 +10,11 @@ import { useAppStackNavigation } from '../../navigation/hooks/useNavigationHooks
 import PictureCard from '../../components/DailyPictureCard';
 import { onPressNavigate } from '../../../utils/navigation/navigation.utils';
 
+/**
+ * TODO:
+ * add a form with React hook form to seach for a specific image
+ */
+
 const SearchScreen = () => {
   const [date, setDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
