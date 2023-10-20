@@ -1,15 +1,10 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Image } from 'expo-image';
 import React from 'react';
-import { SIZES } from '../../../../core/theme';
+import { COLORS, SIZES } from '../../../../core/theme';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { AppStackParamList } from '../../../navigation/types/AppStackParamList';
 import { PictureEntity } from '../../../../models/picture/picture.entity';
-
-/**
- * TODO :
- * change the case when media_type === 'video' => img source = thumbnail_url
- */
 
 interface Props {
   navigation: NativeStackNavigationProp<AppStackParamList>;
@@ -29,7 +24,7 @@ const GalleryPictureCard = ({ navigation, item }: Props) => {
           })
         }
       >
-        <Text>{item?.date} </Text>
+        <Text style={styles.pictureDate}>{item?.date}</Text>
         <Image
           style={styles.galleryPicture}
           source={{
@@ -51,9 +46,17 @@ const styles = StyleSheet.create({
 
   galleryPicture: {
     width: '100%',
-    height: 250,
+    height: 200,
     borderRadius: SIZES.xSmall,
   },
+
+  pictureDate: {
+    fontWeight: '600',
+    color: COLORS.secondary,
+    textAlign: 'center',
+    paddingVertical: SIZES.xxSmall,
+  },
+
   webView: {
     width: '100%',
     marginTop: SIZES.small,

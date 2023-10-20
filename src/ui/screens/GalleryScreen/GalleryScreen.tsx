@@ -38,7 +38,6 @@ const GalleryScreen = () => {
               return <GalleryPictureCard navigation={navigation} item={item} />;
             }}
             keyExtractor={(item) => `${item?.date}`}
-            numColumns={2}
             onEndReached={() =>
               loadMorePictures({
                 newStartDate: newStartDate,
@@ -49,6 +48,7 @@ const GalleryScreen = () => {
                 setNewPictures: setNewPictures,
               })
             }
+            numColumns={2}
             onEndReachedThreshold={0.2}
             ListFooterComponent={<Loader />}
           />
