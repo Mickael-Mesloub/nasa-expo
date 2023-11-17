@@ -3,5 +3,13 @@
     "home": "Home",
     "gallery": "Gallery",
     "search": "Search"
+  },
+  "components": {
+    "dailyPictureCard": {
+      "title": {
+        "picture": "Picture of the day",
+        "video": "Video of the day"
+      }
+    }
   }
 }

@@ -8,7 +8,7 @@ import CustomDatePicker, {
 import { useGetDailyPicture } from '../../../api/picture/getDailyPicture';
 import { useAppStackNavigation } from '../../navigation/hooks/useNavigationHooks';
 import PictureCard from '../../components/DailyPictureCard';
-import { onPressNavigate } from '../../../utils/navigation/navigation.utils';
+import { onPressNavigate } from '../../../utils/navigation/navigation';
 
 /**
  * TODO:

@@ -1,8 +1,7 @@
 import { Alert } from 'react-native';
 import { getPicturesFromDateToDate } from '../../api/picture/getPicturesFromDateToDate';
-import { DAY } from '../../core/dates';
 import { PictureEntity } from '../../models/picture/picture.entity';
-import { formatDateHyphenUK } from '../date/date.utils';
+import { formatDateHyphenUK, updateDates } from '../date/date.utils';
 
 /** !TODO
  * Reorganize logic
@@ -25,7 +24,7 @@ export const loadMorePictures = ({
   newPictures,
   setNewPictures,
 }: Props) => {
-  const updatedStartDate = new Date(newStartDate.getTime() - 9 * DAY);
+  const updatedStartDate = updateDates(newStartDate, 9);
   setNewStartDate(updatedStartDate);
   getPicturesFromDateToDate(
     formatDateHyphenUK(updatedStartDate),
@@ -33,7 +32,7 @@ export const loadMorePictures = ({
   )
     .then((newData) => {
       setNewPictures([...newPictures, ...newData]);
-      setNewEndDate(new Date(updatedStartDate.getTime() - 1 * DAY));
+      setNewEndDate(updateDates(updatedStartDate, 1));
     })
     .catch((error) =>
       Alert.alert(
